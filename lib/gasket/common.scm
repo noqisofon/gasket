@@ -1,10 +1,11 @@
 (define-module (gasket common)
+  #:use-module (gauche file util)
   #:use-module (shell command))
 
 (define-public (find-meta-file dir-path)
   ""
-  (let ((found-paths (map file-exists? (list (string-append dir-path "/meta.info")
-                                             (string-append dir-path "/meta.json")))))
+  (let ((found-paths (map file-exists? (list (build-path dir-path "meta.info")
+                                             (build-path dir-path "meta.json")))))
     (if (null? found-paths)
         (car found-paths)
         #f)))

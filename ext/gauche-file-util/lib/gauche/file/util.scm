@@ -10,6 +10,21 @@ A current user is used when ~user~ is omitted.
         ;; else
         (passwd:dir (getpwuid (getuid))))))
 
+
+(define-public (regular-file? path)
+  "~#t~ will be returned if the path of a file is a regular entry."
+  (let ((st (stat path)))
+    (stat:type st)))
+
+(define-public (file-execute-access? path)
+  ""
+  (access? path X_OK))
+
+(define-public (execution-file? path)
+  "~#t~ will be returned if the path of a file can be performed."
+  (and (regular-file? path)
+       (file-execute-access? path)))
+
 (define* (build-path base-path #:rest components)
   "The ~component~ of a pathname is added to ~base-path~ ."
   (string-join (map (lambda (path)
@@ -27,3 +42,4 @@ Otherwise, ~path~ itself is returned.
       (let ((home-dir (home-directory)))
         (string-append home-dir (string-drop path 1)))
       path))
+
