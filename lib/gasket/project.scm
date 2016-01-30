@@ -25,6 +25,13 @@
 (define-method (object->string (self <gasket-project>))
   (slot-ref self 'name))
 
+(define (slurp filename)
+  (call-with-input-file filename
+    (lambda (input)
+      (read input))))
+
 (define-method (update-from-meta-file (self <gasket-project>) (metafile <string>))
-  (let ((mod (from-s-exp (slurp metafile))))
-    (set-name self (cdr (assoc 'name assoc)))))
+  (let ((mod (slurp metafile)))
+    (set-slot! self 'name         (cdr (assoc 'name    mod)))
+    (set-slot! self 'version      (cdr (assoc 'version mod)))
+    (set-slot! self 'dependencies (cdr (assoc 'depends mod)))))
