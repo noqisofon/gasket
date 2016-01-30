@@ -1,0 +1,21 @@
+;; -*- mode: scheme; -*-
+((name            . "gasket")
+ (version         . "0.1")
+ (implementations . ("guile" "2.0.11"))
+ (description     . "A module manager")
+ (depends         . ((file finder)
+                     (shell command)
+                     (gauche file util)))
+ (source-url      . "git@github.com:noqisofon/gasket.git")
+ (authors
+  . ("Ned Rihine"))
+ (support
+  .
+  ((bugtracker . "https://github.com/noqisofon/gasket/issues")
+   (source     . "https://github.com/noqisofon/gasket")))
+ (provides
+  .
+  (((gasket)             "lib/gasket.scm")
+   ((gasket common)      "lib/gasket/common.scm")
+   ((gasket application) "lib/gasket/application.scm")
+   ((gasket project)     "lib/gasket/project.scm"))))

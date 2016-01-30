@@ -26,4 +26,5 @@
   (slot-ref self 'name))
 
 (define-method (update-from-meta-file (self <gasket-project>) (metafile <string>))
-  )
+  (let ((mod (from-s-exp (slurp metafile))))
+    (set-name self (cdr (assoc 'name assoc)))))
