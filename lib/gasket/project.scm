@@ -6,6 +6,7 @@
 ;;; Code:
 
 (define-module (gasket project)
+  #:use-module (gasket common)
   #:use-module (oop goops)
   #:use-module (ice-9 hash-table))
 
@@ -25,11 +26,6 @@
 
 (define-method (instance->string (self <gasket-project>))
   (slot-ref self 'name))
-
-(define (slurp filename)
-  (call-with-input-file filename
-    (lambda (input)
-      (read input))))
 
 (define-method (update-from-meta-file (self <gasket-project>) (metafile <string>))
   (let ((mod (slurp metafile)))

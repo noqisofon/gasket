@@ -7,7 +7,9 @@
 
 (define-module (gasket)
   #:use-module (gasket common)
+  #:use-module (gasket installer)
   #:use-module (gasket project)
+  #:use-module (gauche file util)
   #:use-module (shell command)
   #:use-module (oop goops))
 
@@ -37,3 +39,7 @@
 
 (define-method (announce-depends (self <gasket>) (module-pair <pair>))
   (format #t " ===> ~A depends on ~A" (car module-pair) (cdr module-pair)))
+
+(define-method (project-from-local (self <gasket>) (project-name <string>))
+  (let ((metafile (find-meta-file project-name)))
+    #f))

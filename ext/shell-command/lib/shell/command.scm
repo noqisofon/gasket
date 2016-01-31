@@ -1,21 +1,6 @@
 (define-module (shell command)
   #:use-module (file finder))
 
-(define (file-is-regular? path)
-  ""
-  (if (file-exists? path)
-      (let ((st (stat path)))
-        (eq? 'regular (stat:type st)))
-      ;; else
-      #f))
-
-(define (file-is-directory? path)
-  ""
-  (if (file-exists? path)
-      (let ((st (stat path)))
-        (eq? 'directory (stat:type st)))
-      ;; else
-      #f))
 
 (define (*cat filename)
   ""

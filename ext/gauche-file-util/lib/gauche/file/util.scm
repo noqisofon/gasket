@@ -1,6 +1,7 @@
-(define-module (gauche file util))
+(define-module (gauche file util)
+  #:use-module (ice-9 optargs))
 
-(define* (home-directory #:optional user)
+(define*-public (home-directory #:optional user)
   "The home directory of user~user~ given by the user ID of the name or the integer is returned.
 A current user is used when ~user~ is omitted.
 ~#f~ is returned, when the given user is not found or a home directory is not able to be determined."
@@ -10,11 +11,21 @@ A current user is used when ~user~ is omitted.
         ;; else
         (passwd:dir (getpwuid (getuid))))))
 
-
-(define-public (regular-file? path)
+(define-public (file-is-regular? path)
   "~#t~ will be returned if the path of a file is a regular entry."
-  (let ((st (stat path)))
-    (stat:type st)))
+  (if (file-exists? path)
+      (let ((st (stat path)))
+        (eq? 'regular (stat:type st)))
+      ;; else
+      #f))
+
+(define-public (file-is-directory? path)
+  ""
+  (if (file-exists? path)
+      (let ((st (stat path)))
+        (eq? 'directory (stat:type st)))
+      ;; else
+      #f))
 
 (define-public (file-execute-access? path)
   ""
@@ -22,17 +33,16 @@ A current user is used when ~user~ is omitted.
 
 (define-public (execution-file? path)
   "~#t~ will be returned if the path of a file can be performed."
-  (and (regular-file? path)
+  (and (file-is-regular? path)
        (file-execute-access? path)))
 
-(define* (build-path base-path #:rest components)
+(define*-public (build-path base-path #:rest components)
   "The ~component~ of a pathname is added to ~base-path~ ."
   (string-join (map (lambda (path)
                       (string-trim-both path (string-ref file-name-separator-string 0)))
                     (cons base-path components))
                file-name-separator-string
                'prefix))
-(export build-path)
 
 (define-public (expand-path path)
   "If ~path~ includes the tilde display, what developed it will be returned.

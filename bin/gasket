@@ -1,8 +1,8 @@
-#!/usr/bin/guile \
--s
+#!/usr/bin/guile
+-s \
 !#
 ;; -*- mode: scheme; -*-
-;; (use-modules (gascket application))
+(use-modules (gasket))
 
 
 (define (main args)

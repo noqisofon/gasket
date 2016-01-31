@@ -22,3 +22,8 @@
   ""
   (let ((site-dir (%site-dir)))
     (what site-dir)))
+
+(define-public (slurp filename)
+  (call-with-input-file filename
+    (lambda (input)
+      (read input))))

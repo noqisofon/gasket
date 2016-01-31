@@ -1,4 +1,5 @@
-(define-module (file finder))
+(define-module (file finder)
+  #:use-module (ice-9 optargs))
 
 (define (in-dir dirpath proc)
   (let ((targets (opendir dirpath)))
@@ -11,7 +12,7 @@
             (recur (readdir targets)))))
     (closedir targets)))
 
-(define-public* (file-find dirpath
-                           #:key #:name #:type
-                           #:optional (exclude #f) (recursive? #t) (keep-going? #f))
+(define*-public (file-find dirpath
+                    #:optional (exclude #f) (recursive? #t) (keep-going? #f)
+                    #:key (name "") (type ""))
   )
