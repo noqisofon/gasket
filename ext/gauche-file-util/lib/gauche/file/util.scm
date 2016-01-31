@@ -1,4 +1,4 @@
-(define-module (file util))
+(define-module (gauche file util))
 
 (define* (home-directory #:optional user)
   "The home directory of user~user~ given by the user ID of the name or the integer is returned.

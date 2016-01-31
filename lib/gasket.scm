@@ -23,17 +23,17 @@
              #:getter get-installer
              #:setter set-installer!))
 
-(define-method (announce (self <gasket>) (what))
+(define-method (announce (self <gasket>) (what <string>))
   (format #t " ===> ~A~%" what))
 
 (define-method (annouce-building (self <gasket>) (project <gasket-project>))
-  (format #t " ===> building ~A~%" (get-name project)))
+  (format #t " ===> building ~A~%" (slot-ref project 'name)))
 
 (define-method (annouce-installing (self <gasket>) (project <gasket-project>))
-  (format #t " ===> installing ~A~%" (get-name project)))
+  (format #t " ===> installing ~A~%" (slot-ref project 'name)))
 
 (define-method (announce-success (self <gasket>) (project <gasket-project>))
-  (format #t " ===> successfully installed ~A~%" (get-name project)))
+  (format #t " ===> successfully installed ~A~%" (slot-ref project 'name)))
 
-(define-method (announce-depends (self <gasket>) (module-pair))
+(define-method (announce-depends (self <gasket>) (module-pair <pair>))
   (format #t " ===> ~A depends on ~A" (car module-pair) (cdr module-pair)))
