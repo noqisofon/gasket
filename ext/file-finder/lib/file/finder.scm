@@ -13,6 +13,6 @@
     (closedir targets)))
 
 (define*-public (file-find dirpath
-                    #:optional (exclude #f) (recursive? #t) (keep-going? #f)
-                    #:key (name "") (type ""))
-  )
+                           #:optional (exclude #f) (recursive? #t) (keep-going? #f)
+                           #:key name type)
+  #f)

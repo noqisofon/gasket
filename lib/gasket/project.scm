@@ -22,6 +22,8 @@
   (meta-info #:allocation #:instance
              #:init-value (make-hash-table)))
 
+(export <gasket-project>)
+
 (define %project-state
   '("absent" "install-dep" "installed"))
 

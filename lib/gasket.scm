@@ -9,7 +9,7 @@
   #:use-module (gasket common)
   #:use-module (gasket installer)
   #:use-module (gasket project)
-  #:use-module (gauche file util)
+  #:use-module (io path)
   #:use-module (shell command)
   #:use-module (oop goops))
 
@@ -28,6 +28,9 @@
 (define-method (announce (self <gasket>) (what <string>))
   (format #t " ===> ~A~%" what))
 
+(define-method (announce-fetching (self <gasket>) (project <gasket-project>))
+  (format #t " ===> fetching ~A~%" (slot-ref project 'name)))
+
 (define-method (annouce-building (self <gasket>) (project <gasket-project>))
   (format #t " ===> building ~A~%" (slot-ref project 'name)))
 
@@ -43,3 +46,11 @@
 (define-method (project-from-local (self <gasket>) (project-name <string>))
   (let ((metafile (find-meta-file project-name)))
     #f))
+
+(define-method (install (self <gasket>) (project <gasket-project>))
+  (let ((cwd          (getpwd))
+        (dir          (tmpdir))
+        ;(reports-file ())
+        )
+    (announce-fetching self)
+    ))

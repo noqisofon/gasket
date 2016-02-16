@@ -1,5 +1,5 @@
 (define-module (gasket common)
-  #:use-module (gauche file util)
+  #:use-module (io path)
   #:use-module (shell command))
 
 (define-public (find-meta-file dir-path)
