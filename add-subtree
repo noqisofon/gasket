@@ -1,5 +1,5 @@
 #!/usr/bin/sh
 
-git subtree add --prefix ext/io-path        https://github.com:scheme-gasket/scm-io-path.git master --squash
-git subtree add --prefix ext/shell-command  https://github.com:scheme-gasket/scm-shell-command.git master --squash
-git subtree add --prefix ext/version        https://github.com/scheme-gasket/scm-version.git master --squash
+git subtree add --prefix ext/io-path        https://github.com/scheme-gasket/scm-io-path.git       master --squash
+git subtree add --prefix ext/shell-command  https://github.com/scheme-gasket/scm-shell-command.git master --squash
+git subtree add --prefix ext/version        https://github.com/scheme-gasket/scm-version.git       master --squash
