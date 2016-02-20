@@ -5,10 +5,10 @@
  (description     . "A module manager")
  (depends         . ((file finder)
                      (shell command)
-                     (gauche file util)))
- (source-url      . "git@github.com:noqisofon/gasket.git")
- (authors
-  . ("Ned Rihine"))
+                     (io path)))
+ (source-url      . "https://github.com/scheme-gasket/gasket.git")
+ (authors         . (
+                     ("Ned Rihine <ned.rihine@gmail.com>")))
  (support
   .
   ((bugtracker . "https://github.com/noqisofon/gasket/issues")

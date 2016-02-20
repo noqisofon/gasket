@@ -4,6 +4,16 @@
 ;; -*- mode: scheme; -*-
 (use-modules (gasket))
 
+(define* (install prefix #:key (no-tests? #f) (no-deps? #f) (force? #f) #:rest distributes)
+  (let ((gasket (make-gasket (make-default-ecosystem))))
+    (for-each (lambda (distribute)
+                (resolve-install gasket
+                                 distribute
+                                 no-tests?
+                                 no-deps?
+                                 fource?
+                                 prefix))
+              distributes)))
 
 (define (main args)
   (let ((argc (length args)))
