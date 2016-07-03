@@ -1,6 +1,4 @@
 
-(define-module (gasket config)
-  #:exports ())
 
 ;;; Commentary:
 ;;;
@@ -8,34 +6,40 @@
 ;;;
 ;;; Code:
 
-(define %gasket-package-name
+
+(define-module (gasket config)
+  #:exports ())
+
+;;;
+
+(define-public %gasket-package-name
   "Gasket")
 
-(define %gasket-version
+(define-public %gasket-version
   "0.1.0")
 
-(define %gasket-bug-report-address
+(define-public %gasket-bug-report-address
   "ned.rihine@gmail.com")
 
-(define %gasket-home-page-url
+(define-public %gasket-home-page-url
   "https://github.com/noqisofon/gasket")
 
-(define %temporary-directory
+(define-public %temporary-directory
   (or (getenv "GASKET_TEMP_DIR")
       "/usr/local/var/gasket"))
 
-(define %config-directory
+(define-public %config-directory
   (or (getenv "GASKET_CONF_DIR")
       "/usr/local/etc/gasket"))
 
-(define %machine-type
+(define-public %machine-type
   "x86_64")
 
-(define %gzip
+(define-public %gzip
   "/sbin/gzip")
 
-(define %bzip2
+(define-public %bzip2
   "/sbin/bzip2")
 
-(define %xz
+(define-public %xz
   "/sbin/xz")

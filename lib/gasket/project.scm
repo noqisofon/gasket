@@ -13,19 +13,19 @@
 ;;;
 
 (define-class <gasket-project> ()
-  (name #:allocation #:instance
-        #:init-keyword #:name )
-  (version #:allocation #:instance
-           #:init-keyword #:version)
+  (name         #:allocation #:instance
+                #:init-keyword #:name )
+  (version      #:allocation #:instance
+                #:init-keyword #:version)
   (dependencies #:allocation #:instance
                 #:init-value '())
-  (meta-info #:allocation #:instance
-             #:init-value (make-hash-table)))
+  (meta-info    #:allocation #:instance
+                #:init-value (make-hash-table)))
 
 (export <gasket-project>)
 
 (define %project-state
-  '("absent" "install-dep" "installed"))
+  '(:absent :install-dep :installed))
 
 (define-method (instance->string (self <gasket-project>))
   (slot-ref self 'name))
